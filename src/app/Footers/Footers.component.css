@@ -1,0 +1,33 @@
+.hover-underline-animation {
+    display: inline-block;
+    position: relative;
+    
+  }
+  .hover-underline-animation:after {
+    content: '';
+    position: absolute;
+    margin-left: 10px;
+    
+    width: 80%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: white;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+  }
+  
+  .hover-underline-animation:hover:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+   
+  }
+  
+  .hover-text-white{
+    color: rgb(170, 170, 170);
+  }
+  .hover-text-white:hover{  
+    color:white;
+  
+  }
