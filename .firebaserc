@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "coffee-639b5"
+  },
+  "targets": {
+    "coffee-639b5": {
+      "hosting": {
+        "coffee": [
+          "coffee-639b5"
+        ]
+      }
+    }
   }
 }
