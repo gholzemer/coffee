@@ -1,5 +1,7 @@
 # Grant's Portfolio
 
+https://grantholzemer.com/
+
 This project was generated with Angular version 12.2.3.
 
 This is my personal website/portfolio. Hosted with firebase and domain registered at GoDaddy. 
