@@ -1,6 +1,10 @@
 # Coffee
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.3.
+This project was generated with Angular version 12.2.3.
+
+This is my personal website/portfolio. Hosted with firebase and domain registered at GoDaddy. 
+I am try to keep my portfolio as up to date as possible but has not been updated since 9/21.
+I plan to launch a more updated version of the portfolio by the end of 2022.
 
 ## Development server
 
