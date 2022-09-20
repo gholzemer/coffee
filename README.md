@@ -6,26 +6,23 @@ This is my personal website/portfolio. Hosted with firebase and domain registere
 I am try to keep my portfolio as up to date as possible but has not been updated since 9/21.
 I plan to launch a more updated version of the portfolio by the end of 2022.
 
-## Development server
+Grant P. Holzemer
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Development
+If you are looking to use my website for a template of your own portfolio:
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+* You need nodeJS 
+* Download Angular CLI (latest version)
+* Download Bootstrap (latest version)
+* From root directory run 'ng serve' and goto: http://localhost:4200/
+* You should see a locally hosted version of my website
+* Make changes and be creative
+* 
+* See firebase documentation for hosting/deployment
+* 
 
 ## Build
-
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
 ## Further help
-
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
