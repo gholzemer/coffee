@@ -16,7 +16,7 @@ If you are looking to use my website for a template of your own portfolio:
 * You need nodeJS 
 * Download Angular CLI (latest version)
 * Download Bootstrap (latest version)
-* From root directory run 'ng serve' and goto: http://localhost:4200/
+* From root directory run `ng serve` and goto: http://localhost:4200/
 * You should see a locally hosted version of my website
 * Make changes and be creative
 * 
