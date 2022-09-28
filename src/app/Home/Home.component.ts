@@ -24,6 +24,10 @@ export class HomeComponent implements OnInit  {
         AOS.init();
 
     }
+    openPDF(){
+        
+        window.open("./src/assets/Resume 3.2.pdf");
+    }
     
      
         

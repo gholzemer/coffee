@@ -6,14 +6,13 @@
   .hover-underline-animation:after {
     content: '';
     position: absolute;
-    margin-left: 10px;
-    
-    width: 80%;
+    width: 140%;
+    margin-left: -1vh;
     transform: scaleX(0);
     height: 2px;
     bottom: 0;
     left: 0;
-    background-color: white;
+    background-color: rgb(138, 208, 255);
     transform-origin: bottom right;
     transition: transform 0.25s ease-out;
   }
@@ -25,10 +24,10 @@
   }
   
   .hover-text-white{
-    color: rgb(170, 170, 170);
+    color: rgb(223, 223, 223);
   }
   .hover-text-white:hover{  
-    color:white;
+    color:rgb(138, 208, 255);
   
   }
 

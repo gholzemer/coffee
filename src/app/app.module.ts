@@ -8,10 +8,11 @@ import { AppComponent } from './app.component';
 import { appRoutingModule } from './app.routing';
 import { FootersComponent } from './Footers/Footers.component';
 import { HomeComponent } from './Home/Home.component';
-import { TopNavBarComponent } from './TopNavBar/TopNavBar.component';
 import { ContactmeComponent } from './ContactMe/ContactMe.component';
 import { MyWebsiteArchiveComponent } from './MyWebsiteArchives/MyWebsiteArchive.component';
 import { CoffeeReviewsComponent } from './CoffeeReviews/CoffeeReviews.component';
+import { projectsComponent } from './Projects/projects.component';
+import { TopNavBarComponent } from './TopNavBar/TopNavBar.component';
 
 
 
@@ -20,11 +21,12 @@ import { CoffeeReviewsComponent } from './CoffeeReviews/CoffeeReviews.component'
     AppComponent,
     HomeComponent,
     AboutMeComponent,
-    TopNavBarComponent,
     FootersComponent,
     ContactmeComponent,
     MyWebsiteArchiveComponent,
-    CoffeeReviewsComponent
+    CoffeeReviewsComponent,
+    projectsComponent,
+    TopNavBarComponent
   ],
   imports: [
     BrowserModule,
