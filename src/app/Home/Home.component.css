@@ -1,4 +1,8 @@
 
+body{
+  overflow:hidden;
+}
+
 .hover-underline-animation {
     display: inline-block;
     position: relative;
@@ -58,8 +62,32 @@
   background: red;
 } 
 
+.work{
+  font-size: 3vh;
+}
+.desc{
+  font-size:2.5vh;
+}
 
+@media screen and (max-width: 768px) {
+  nav div div{
+    justify-content: center;
+    display:block;
+  }
+  body{
+    overflow: hidden;
+  }
+  .description{
+    font-size:small;
+  }
+  .work{
+    font-size:small;
+  }
+  .desc{
+    font-size:smaller;
+  }
 
+}
 
 
 
