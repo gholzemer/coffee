@@ -5,15 +5,28 @@ name: Deploy to Firebase Hosting on merge
 'on':
   push:
     branches:
-      - main
+      - version2.0
+  workflow_dispatch:
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
+      # Angular 12 only builds on Node 16 or older
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 16
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      # The Firebase deploy tool needs a current Node
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_COFFEE_639B5 }}'
           channelId: live
           projectId: coffee-639b5
+          target: coffee
