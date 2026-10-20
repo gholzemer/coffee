@@ -1,12 +1,12 @@
 {
   "projects": {
-    "default": "coffee-639b5"
+    "default": "grantholzemer-com"
   },
   "targets": {
-    "coffee-639b5": {
+    "grantholzemer-com": {
       "hosting": {
         "coffee": [
-          "coffee-639b5"
+          "grantholzemer-com"
         ]
       }
     }
