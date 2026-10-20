@@ -1,1 +1,128 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* ---- Color refresh ---- */
+:root {
+  --bg: #15161c;
+  --bg-deep: #0e0f14;
+  --accent: #8ad0ff;
+  --accent-2: #b06bff;
+  --accent-gradient: linear-gradient(90deg, #b06bff, #8ad0ff);
+  --muted: #a3a8b8;
+  --soft-line: rgba(255, 255, 255, 0.12);
+}
+
+body {
+  background-color: var(--bg);
+}
+
+.page-bg {
+  background-color: var(--bg);
+}
+
+/* Frosted nav with a gradient underline */
+.nav-bar {
+  background-color: rgba(21, 22, 28, 0.82);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 2px solid transparent;
+  border-image: var(--accent-gradient) 1;
+}
+
+/* About section: richer gradient that drifts slowly */
+.about-gradient {
+  background-image: linear-gradient(120deg, #9b2cff, #5b6cff, #4fb8ff, #9b2cff);
+  background-size: 300% 300%;
+  background-attachment: fixed;
+  animation: gradient-drift 18s ease-in-out infinite alternate;
+}
+
+@keyframes gradient-drift {
+  from { background-position: 0% 50%; }
+  to { background-position: 100% 50%; }
+}
+
+.code-card {
+  background-color: var(--bg-deep);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+}
+
+/* Blinking terminal cursor */
+.cursor {
+  display: inline-block;
+  color: var(--accent);
+  animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+/* Section headings get a short gradient bar underneath */
+.section-title {
+  position: relative;
+  font-size: 1.75rem !important;
+}
+
+.section-title::after {
+  content: '';
+  display: block;
+  width: 56px;
+  height: 3px;
+  margin: 12px auto 0;
+  border-radius: 2px;
+  background: var(--accent-gradient);
+}
+
+.gradient-rule {
+  border-bottom: 1px solid transparent;
+  border-image: linear-gradient(90deg, transparent, #b06bff, #8ad0ff, transparent) 1;
+}
+
+.soft-top {
+  border-top: 1px solid var(--soft-line);
+}
+
+/* Resume rows: accent-colored labels, softer dividers, readable text hierarchy */
+.label-col.text-white,
+.label-title.text-white {
+  color: var(--accent) !important;
+}
+
+.label-col.border-end {
+  border-color: var(--soft-line) !important;
+}
+
+.resume-row {
+  padding-bottom: 1.5rem;
+}
+
+.resume-row > .text-center .fs-3 {
+  font-weight: 600;
+}
+
+.resume-row > .text-center p.desc {
+  color: var(--muted);
+}
+
+.resume-row > .text-start p.desc {
+  color: #e4e6ee;
+}
+
+/* Logos lift and glow a little on hover */
+.resume-row img {
+  transition: transform 0.3s ease, filter 0.3s ease !important;
+}
+
+.resume-row img:hover {
+  transform: scale(1.06) !important;
+  filter: drop-shadow(0 0 18px rgba(138, 208, 255, 0.35));
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  .about-gradient,
+  .cursor {
+    animation: none;
+  }
+}

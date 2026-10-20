@@ -9,7 +9,7 @@ import * as AOS from 'aos';
 export class AppComponent implements OnInit{
   title = 'coffee';
   ngOnInit(): void{
-    AOS.init();
+    AOS.init({ duration: 900, easing: 'ease-out-cubic', once: true });
 
   }
 
