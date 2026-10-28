@@ -120,9 +120,74 @@ body {
 }
 
 
+/* Intro under "HELLO, WORLD!" fades in once the greeting has typed out */
+.headline {
+  font-size: 1.35rem;
+  color: white;
+  animation: fade-up 0.8s ease 1.7s both;
+}
+
+.headline-sub {
+  font-size: 1rem;
+  color: var(--muted);
+  max-width: 60ch;
+  margin: 0 auto;
+  animation: fade-up 0.8s ease 2s both;
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Typeable prompt at the bottom of the About code block */
+.term-line {
+  position: relative;
+  display: flex;
+  gap: 0.6em;
+  width: 100%;
+  cursor: text;
+}
+
+.term-input {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 0;
+  color: white;
+  font: inherit;
+  caret-color: var(--accent);
+}
+
+.term-cursor {
+  position: absolute;
+  left: 1.6em;
+  pointer-events: none;
+}
+
+.term-reply {
+  color: #e0af68;
+}
+
+/* Links inside resume bullets */
+.resume-row a {
+  color: var(--accent);
+  text-decoration-color: rgba(138, 208, 255, 0.45);
+  text-underline-offset: 3px;
+}
+
+.resume-row a:hover {
+  color: white;
+  text-decoration-color: white;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .about-gradient,
-  .cursor {
+  .cursor,
+  .headline,
+  .headline-sub {
     animation: none;
   }
 }

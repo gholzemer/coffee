@@ -24,9 +24,12 @@
 
 <div class="hide page-bg" style="padding-top: 150px; overflow: hidden;">
 
-    <div class="text-center text-white fs-5" style="height: 12vh; font-family:'Courier New', Courier, monospace;"
-        aria-label="HELLO, WORLD!">
+    <div class="text-center text-white fs-5 pb-5 px-3" style="min-height: 12vh; font-family:'Courier New', Courier, monospace;">
+        <span class="visually-hidden">HELLO, WORLD!</span>
         <span aria-hidden="true">{{ greeting }}<span class="cursor">_</span></span>
+        <p class="headline pt-4 mb-2">I'm Grant, a Software Engineer at Google DeepMind.</p>
+        <p class="headline-sub mb-0">I build reliable infrastructure for machine learning research. Previously, a
+            Software Development Engineer II at AWS on the EC2 networking control plane team.</p>
     </div>
 
     <div class="hero-img text-center text-white fs-4 "
@@ -63,18 +66,13 @@
             </div>
 
             <div class="out pb-2" data-aos="fade-right" data-aos-duration="1000">
-                => WVU Athletics, Software Engineer Intern
-                <div class="out-date">August 2022 - April 2023</div>
-            </div>
-
-            <div class="out pb-2" data-aos="fade-right" data-aos-duration="1000">
                 => Raytheon Intelligence & Space, Software Engineer Intern
                 <div class="out-date">May 2022 - August 2022</div>
             </div>
 
             <div class="out pb-4" data-aos="fade-right" data-aos-duration="1000">
-                => Locked Shields NATO Cyber Exercise, Security Analyst
-                <div class="out-date">Oct 2021 - Apr 2022</div>
+                => U.S. Army National Guard, Specialist (E4)
+                <div class="out-date">June 2020 - June 2026</div>
             </div>
 
             <div data-aos="fade-right" data-aos-duration="1000">> <span style="color: #ff9e64;">console.log(</span><span
@@ -94,7 +92,17 @@
             <div class="out" data-aos="fade-right" data-aos-duration="1000">=> Fitness.</div>
             <div class="out" data-aos="fade-right" data-aos-duration="1000">=> Golf.</div>
             <div class="out" data-aos="fade-right" data-aos-duration="1000">=> Coffee.</div>
-            <div class="pt-4">> <span class="cursor">_</span></div>
+            <div class="pt-4 term">
+                <div *ngFor="let line of termLines" [class.out]="line.reply" [class.term-reply]="line.reply">{{ line.reply ? '=>' :
+                    '>' }} {{ line.text }}</div>
+                <label class="term-line">
+                    <span>&gt;</span>
+                    <input #term class="term-input" type="text" maxlength="80" autocomplete="off" autocapitalize="off"
+                        spellcheck="false" aria-label="Type a command" (keydown.enter)="runCommand(term)"
+                        (focus)="termFocused = true" (blur)="termFocused = false" />
+                    <span class="cursor term-cursor" *ngIf="!termFocused && !term.value" aria-hidden="true">_</span>
+                </label>
+            </div>
         </div>
         <div class="col-1 col-md-2 col-lg-3"></div>
         <div id="resume" style="height:.2vh"></div>
@@ -143,17 +151,16 @@
         </div>
         <div class="col-12 col-lg text-start px-4 text-white" style="font-family: monospace;" data-aos="fade-up"
             data-aos-duration="1000">
-            <p class="desc">Languages: Java, C++, Python, Ruby, TypeScript, JavaScript, SQL</p>
-            <p class="desc">Infrastructure & Cloud: AWS (EC2, ECS, VPC, DynamoDB, Lambda, S3, CloudFormation,
-                CloudWatch)</p>
+            <p class="desc">Languages: Java, Python, C++, TypeScript, Ruby, SQL</p>
+            <p class="desc">AWS: EC2, VPC, DynamoDB, Lambda, S3, CloudFormation, CloudWatch</p>
+            <p class="desc">Google Infrastructure: Spanner, Pub/Sub, Stubby (RPC), Borg, XManager</p>
             <p class="desc">Systems: Distributed Systems, Networking (gRPC, HTTP, TCP/UDP/ICMP, RDMA), API Design,
-                Reliability Engineering</p>
-            <p class="desc">Tools: Git, CI/CD Pipelines, IaC, Cloud Monitoring & Alerting, Grafana</p>
+                Reliability Engineering & SLOs</p>
+            <p class="desc">Tools: Git, CI/CD Pipelines, Infrastructure as Code, Grafana, Monitoring & Alerting</p>
             <div class="skill-logos pb-3">
                 <img src="/assets/img/java-logo.png" alt="Java" />
                 <img src="/assets/img/python-logo.png" alt="Python" />
                 <img src="/assets/img/typescript-logo.png" alt="TypeScript" />
-                <img src="/assets/img/javascript-logo.svg" alt="JavaScript" />
                 <img src="/assets/img/sql-logo.png" alt="SQL" />
                 <img src="/assets/img/aws-logo.png" alt="AWS" />
                 <img src="/assets/img/git-logo.png" alt="Git" />
@@ -183,21 +190,22 @@
         <div class="col-12 col-md-6 col-lg text-start px-4 text-white" style="font-family: monospace;" data-aos="fade-up"
             data-aos-duration="1000">
             <p class="desc">
-                ● Proposed and led a re-architecture of XManager, the platform researchers use to launch and track ML
-                experiments. Split 5 critical microservices into compute-isolated zones aligned with researcher
-                workflows, so a failure in one workload no longer disrupts other researchers’ experiments. Two
-                components complete. Three in progress.
+                ● Proposed and led a re-architecture of <a href="https://github.com/google-deepmind/xmanager"
+                    target="_blank" rel="noopener">XManager</a>, the platform researchers use to launch and track ML experiments, splitting 3
+                critical microservices into compute-isolated zones aligned with researcher workflows so a failure in
+                one workload no longer disrupts other researchers’ experiments. The first 2 services eliminated
+                experiment-launch load shedding and cut P99 latency by ~20%.
             </p>
             <p class="desc">
                 ● Identified that the experimentation, compute, and ML serving platforms had no shared definition of a
-                “hero run” (a critical, long-running training job). Proposed and now lead a cross-team initiative that
-                sends a workload-criticality signal from XManager to the compute and serving platforms, so researchers’
-                most important runs get prioritized compute and more precise alerting.
+                “hero run” (a critical, long-running training job); proposed and now lead a cross-platform project
+                sending a criticality signal from XManager to compute and serving, so researchers’ most important runs
+                get prioritized compute and more precise alerting. Implementation in progress.
             </p>
             <p class="desc">
-                ● Recognized that researchers had no client- or server-side monitoring for their high-priority training
-                runs. Designed and built a self-serve Python alerting framework covering quota exhaustion, downstream
-                failures, and client errors, now used by 15 research teams across Google DeepMind.
+                ● Designed and built a self-serve Python observability and alerting framework for high-priority
+                training runs (quota exhaustion, downstream failures, client errors), plus an AI bot that triages
+                incidents; adopted by 15 research teams across Google DeepMind.
             </p>
             <p class="desc">
                 ● Defined SLOs and escalation policies for the experiment analytics platform, which researchers use to
@@ -227,25 +235,31 @@
         <div class="col-12 col-md-6 col-lg text-start px-4 text-white" style="font-family: monospace;" data-aos="fade-up"
             data-aos-duration="1000">
             <p class="desc">
-                ● Led design and implementation of cross-VPC Security Group referencing, a high-risk EC2 control-plane
-                change spanning multiple mutating and read-only APIs, resolving edge cases in authorization, dependency
-                ordering, and backwards compatibility.
+                ● Led design and implementation of <a
+                    href="https://docs.aws.amazon.com/vpc/latest/userguide/security-group-assoc.html" target="_blank" rel="noopener">Security
+                    Group referencing across VPC associations</a>, letting customers reference <a
+                    href="https://docs.aws.amazon.com/vpc/latest/userguide/security-group-sharing.html" target="_blank" rel="noopener">shared
+                    security groups</a> in rules across their VPCs; spanned multiple mutating and read-only EC2
+                control-plane APIs and resolved authorization, dependency-ordering, and backwards-compatibility edge
+                cases.
             </p>
             <p class="desc">
-                ● Owned customer-facing fixes to EC2 Security Group control-plane APIs, introducing batched updates and
-                resilient fallbacks that eliminated customer production network outages during rule updates.
+                ● Fixed a <a href="https://jlordiales.me/posts/2018/01/aws-cloudformation-gotchas-security-groups/"
+                    target="_blank" rel="noopener">years-old failure mode</a> where CloudFormation Security Group updates, even description-only
+                edits, recreated rules and briefly dropped customer production traffic; introduced batched rule updates
+                with resilient fallbacks that eliminated these outages.
             </p>
             <p class="desc">
-                ● Prevented breaking changes for 500+ customer accounts by identifying affected usage ahead of new
-                networking launches and gating rollout with targeted controls.
+                ● Prevented breaking changes for 500+ customer accounts by identifying affected usage ahead of new VPC
+                feature launches and gating rollout with targeted controls.
             </p>
             <p class="desc">
-                ● Reduced large-scale consistency validation runtime by ~90% by redesigning data access patterns with
-                time-based indexing in DynamoDB, cutting regional data processing from months to weeks.
+                ● Reduced large-scale consistency validation runtime by ~90% by re-implementing data access patterns
+                with time-based indexing in DynamoDB, cutting regional data processing from months to weeks.
             </p>
             <p class="desc">
-                ● Cut recovery time for a full regional outage from days to ~1 hour by automating large-scale state
-                reprocessing.
+                ● Cut recovery time for a full regional outage from days to ~1 hour by automating large-scale EC2
+                Security Group state reprocessing.
             </p>
             <p class="desc">
                 ● Built automated multi-region build and deployment pipelines that eliminated manual operator steps.
@@ -265,32 +279,6 @@
     <div class="row pt-5 resume-row">
         <div class="col-12 col-lg-4 label-col text-white text-center fs-4 border-end"
             style="font-family:'Courier New', Courier, monospace;">
-
-            <div class="mt-2 pt-2">
-                <img style=" height:15vh;" data-aos="fade-up" data-aos-duration="700" data-aos-anchor-placement="top"
-                    data-aos-offset="250" src="/assets/img/wvufb-logo.png" />
-            </div>
-        </div>
-        <div class="col-12 col-md-6 col-lg text-center text-white" style="font-family: monospace;" data-aos="fade-up"
-            data-aos-duration="1000">
-            <p class="fs-3">WVU Athletics : RMS Mobile Application</p>
-            <p class="desc">Date: August 2022 - April 2023</p>
-            <p class="desc">Role: Software Developer Intern</p>
-
-        </div>
-        <div class="col-12 col-md-6 col-lg text-start px-4 text-white" style="font-family: monospace;" data-aos="fade-up"
-            data-aos-duration="1000">
-            <p class="desc">Designed and engineered a full stack iOS/AppleTV application for automating the WVU
-                athletic department's rehabilitation process with React Native, REST API, and Microsoft SQL.</p>
-            <p class="desc">Used scrum and agile software development practices, including test-focused development
-                of the application.</p>
-            <p class="desc">Team size of 7.</p>
-        </div>
-    </div>
-
-    <div class="row pt-5 resume-row">
-        <div class="col-12 col-lg-4 label-col text-white text-center fs-4 border-end"
-            style="font-family:'Courier New', Courier, monospace;">
             <img style=" height:15vh;" data-aos="fade-up" data-aos-duration="700" data-aos-anchor-placement="top"
                 data-aos-offset="250" src="/assets/img/rtx-logo.png" />
         </div>
@@ -303,82 +291,21 @@
         </div>
         <div class="col-12 col-md-6 col-lg text-start px-4 text-white" style="font-family: monospace;" data-aos="fade-up"
             data-aos-duration="1000">
-            <p class="desc">Developed a cross-platform application for tracking all active/decayed commercial satellites
-                with Python, Electron,
-                Angular, MySQL, PHP REST API, and the database hosted with AWS’s GovCloud (formerly devcloud).</p>
-            <p class="desc">Satellites, constellations, or selected objects could be sent into a modeling tool called
-                STK with the TLE's of every individual satellite from the GUI for live simulating or architecting.</p>
-            <p class="desc">I worked alongside another intern who specialized in MatLab and the STK modeling tool.</p>
-        </div>
-    </div>
-
-    <div class="row pt-5 resume-row">
-        <div class="col-12 col-lg-4 label-col text-white text-center fs-4 border-end"
-            style="font-family:'Courier New', Courier, monospace;">
-            <img style=" height:15vh;" data-aos="fade-up" data-aos-duration="700" data-aos-anchor-placement="top"
-                data-aos-offset="250"
-                src="https://cdn.freebiesupply.com/logos/large/2x/nato-8-logo-png-transparent.png" />
-        </div>
-        <div class="col-12 col-md-6 col-lg text-center text-white" style="font-family: monospace;" data-aos="fade-up"
-            data-aos-duration="1000">
-            <p class="fs-3">Locked Shields NATO Exercise</p>
-            <p class="desc">Date: October 2021 - April 2022</p>
-            <p class="desc">Role: Security Analyst</p>
-
-        </div>
-        <div class="col-12 col-md-6 col-lg text-start px-4 text-white" style="font-family: monospace;" data-aos="fade-up"
-            data-aos-duration="1000">
-            <p class="desc">Monitored up to 5 Linux servers and 3 Windows servers for unusual activity with Crowdstrike.
+            <p class="desc">
+                ● Built a cross-platform Electron app (Python, Angular, MySQL, AWS) tracking ~3,000 active and decayed
+                commercial satellites in real time, with server-side STK processing to keep satellite models current.
             </p>
-            <p class="desc">Automated server applications deployment with Ansible.</p>
         </div>
     </div>
-
 
     <div class="row pt-5 resume-row">
         <div class="col-12 col-lg-4 label-col text-white text-center fs-4 border-end"
             style="font-family:'Courier New', Courier, monospace;">
-            <img style=" height:15vh;" data-aos="fade-up" data-aos-duration="700" data-aos-anchor-placement="top"
-                data-aos-offset="250" src="/assets/img/interstate-logo.png" />
-        </div>
-        <div class="col-12 col-md-6 col-lg text-center text-white" style="font-family: monospace;" data-aos="fade-up"
-            data-aos-duration="1000">
-            <p class="fs-3">Interstate Van Lines</p>
-            <p class="desc">Date: December 2021 - January 2022</p>
-            <p class="desc">Role: Administrative Assistant Intern</p>
-
-        </div>
-        <div class="col-12 col-md-6 col-lg text-start px-4 text-white" style="font-family: monospace;" data-aos="fade-up"
-            data-aos-duration="1000">
-            <p class="desc">Archiving and cataloging of email databases / dated documentation.</p>
-            <p class="desc">Online researching of other competitors and compilation of the findings.</p>
-        </div>
-    </div>
-
-
-    <div class="row pt-5 resume-row">
-        <div class="col-12 col-lg-4 label-col text-white text-center fs-4 border-end"
-            style="font-family:'Courier New', Courier, monospace;">
-            <div>Personal Projects & Organizations</div>
-            <img style=" height:22vh;" data-aos="fade-up" data-aos-duration="700" data-aos-anchor-placement="top"
-                data-aos-offset="250" src="/assets/img/angularjs-logo.png" />
-        </div>
-        <div class="col-12 col-md-6 col-lg text-center text-white" style="font-family: monospace;" data-aos="fade-up"
-            data-aos-duration="1000">
-            <p class="fs-3">Robo Advisor</p>
-            <p class="desc">Date: January 2023</p>
-        </div>
-        <div class="col-12 col-md-6 col-lg text-start px-4 text-white" style="font-family: monospace;" data-aos="fade-up"
-            data-aos-duration="1000">
-            <p class="desc">Fine-tuned an OpenAI davinci model to give good advice on life and relationships.</p>
-            <p class="desc">Trained on ~350 different questions and answers.</p>
-        </div>
-    </div>
-    <div class="row pt-5 resume-row">
-        <div class="col-12 col-lg-4 label-col text-white text-center fs-4 border-end"
-            style="font-family:'Courier New', Courier, monospace;">
-            <img style=" height:15vh;" data-aos="fade-up" data-aos-duration="700" data-aos-anchor-placement="top"
-                data-aos-offset="250" src="/assets/img/cyberwvu-logo.png" />
+            Organizations
+            <div class="mt-2 pt-2">
+                <img style=" height:15vh;" data-aos="fade-up" data-aos-duration="700" data-aos-anchor-placement="top"
+                    data-aos-offset="250" src="/assets/img/cyberwvu-logo.png" />
+            </div>
         </div>
         <div class="col-12 col-md-6 col-lg text-center text-white" style="font-family: monospace;" data-aos="fade-up"
             data-aos-duration="1000">
@@ -391,26 +318,6 @@
             data-aos-duration="1000">
             <p class="desc">Organized and coordinated cybersecurity related meetings/exercises.</p>
             <p class="desc">Communicated and scheduled meetings with guest speakers.</p>
-        </div>
-    </div>
-
-    <div class="row pt-5 resume-row">
-        <div class="col-12 col-lg-4 label-col text-white text-center fs-4 border-end"
-            style="font-family:'Courier New', Courier, monospace;">
-            <img style=" height:15vh;" data-aos="fade-up" data-aos-duration="700" data-aos-anchor-placement="top"
-                data-aos-offset="250" src="/assets/img/qemu-logo.png" />
-        </div>
-        <div class="col-12 col-md-6 col-lg text-center text-white" style="font-family: monospace;" data-aos="fade-up"
-            data-aos-duration="1000">
-            <p class="fs-3">QEMU x86 Operating System</p>
-            <p class="desc">Date: January 2020 - June 2020</p>
-
-        </div>
-        <div class="col-12 col-md-6 col-lg text-start px-4 text-white" style="font-family: monospace;" data-aos="fade-up"
-            data-aos-duration="1000">
-            <p class="desc">With a small team created a simple multiprogramming operating system in C and assembly.</p>
-            <p class="desc">Multiprogramming allowed multiple processes to be in memory along with interrupt driven I/O.
-            </p>
         </div>
     </div>
 
@@ -434,21 +341,12 @@
         </div>
     </div>
     <div class="row pt-5 soft-top mx-3 mx-lg-5 pb-5">
-        <div class="col-12 col-md-6 col-lg label-title text-white text-center fs-4 pb-3" style="font-family:'Courier New', Courier, monospace;">
-            Personal Projects
-        </div>
-        <div class="col-12 col-md-6 col-lg text-center text-white" style="font-family: monospace;" data-aos="fade-up">
-            <p>My Personal Website | You're on it! | Created with Angular, Bootstrap, Hosted with Firebase and GoDaddy
-            </p>
-            <p class="pt-2">Small 2D Game (Java) | August - October 2019</p>
-            <p class="pt-2">Acupuncture Business Website | March 2022 - Present</p>
-        </div>
-        <div class="col-12 col-md-6 col-lg label-title text-center text-white fs-4 pt-4 pt-lg-0 pb-3" style="font-family:'Courier New', Courier, monospace;">
+        <div class="col-12 col-lg-4 label-title text-white text-center fs-4 pb-3" style="font-family:'Courier New', Courier, monospace;">
             Awards & Accomplishments
         </div>
-        <div class="col-12 col-md-6 col-lg text-center text-lg-start text-white" style="font-family: monospace;" data-aos="fade-up">
+        <div class="col-12 col-lg text-center text-lg-start px-4 text-white" style="font-family: monospace;" data-aos="fade-up">
             <p>Certificate of Recognition by Governor Jim Justice</p>
-            <p>WVU Foundation Outstanding Senior (2023)</p>
+            <p>WVU Foundation Outstanding Senior (2023), one of 52 graduating seniors university-wide</p>
             <p>Research Scholarship</p>
             <p>Locked Shields | NATO Cyber Security Exercise</p>
             <p>Honor Graduate (BCT)</p>
